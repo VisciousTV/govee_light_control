@@ -1,17 +1,23 @@
-FROM python:3.9-slim
-
-# Set working directory
-WORKDIR /app
-
-# Copy dependency definitions and install them
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the application files
-COPY main.py .
-
-# Expose the port that matches the add-on config (5000)
-EXPOSE 5000
-
-# Run the application
-CMD [ "python", "main.py" ]
+{
+  "name": "Govee Control Add-on",
+  "version": "1.0.0",
+  "slug": "govee_control",
+  "description": "A simple add-on to control your Govee devices using your Govee API key.",
+  "startup": "services",
+  "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
+  "options": {
+    "api_key": "YOUR_GOVEE_API_KEY",
+    "port": 5000
+  },
+  "schema": {
+    "api_key": "str",
+    "port": "int?"
+  },
+  "ingress": true,
+  "ingress_port": 5000,
+  "ingress_entry": "http://[HOST]:[PORT]",
+  "ports": {
+    "5000/tcp": 5000
+  },
+  "boot": "auto"
+}
