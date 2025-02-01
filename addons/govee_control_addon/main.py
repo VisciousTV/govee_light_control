@@ -13,17 +13,15 @@ if not API_KEY:
     print("Error: No Govee API key provided. Please set 'api_key' in the add-on options.")
     exit(1)
 
-# Common headers for Govee API requests
+# Set common headers for Govee API requests
 headers = {
     "Govee-API-Key": API_KEY,
     "Content-Type": "application/json"
 }
 
-
 @app.route("/")
 def index():
-    return "Govee Control Add-on is running."
-
+    return "Govee Light Control Add-on is running."
 
 @app.route("/devices", methods=["GET"])
 def get_devices():
@@ -37,7 +35,6 @@ def get_devices():
     else:
         return jsonify({"error": response.text}), response.status_code
 
-
 @app.route("/devices/<device_id>/control", methods=["PUT"])
 def control_device(device_id):
     """
@@ -50,7 +47,7 @@ def control_device(device_id):
          "value": <command_value>
       }
     }
-    Example: To turn a device on, you might send:
+    Example:
     {
       "model": "H6003",
       "cmd": { "name": "turn", "value": "on" }
@@ -73,7 +70,6 @@ def control_device(device_id):
     else:
         return jsonify({"error": response.text}), response.status_code
 
-
 if __name__ == "__main__":
-    # Listen on all interfaces so the add-on is reachable via ingress.
+    # Listen on all interfaces to allow ingress
     app.run(host="0.0.0.0", port=PORT)
