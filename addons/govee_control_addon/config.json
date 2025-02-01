@@ -1,6 +1,23 @@
 {
-  "name": "Govee Add-ons Repository",
-  "addons": [
-    "govee_control_addon"
-  ]
+  "name": "Govee Light Control Add-on",
+  "version": "1.0.0",
+  "slug": "govee_control_addon",
+  "description": "A simple add-on to control your Govee lights using your Govee API key.",
+  "startup": "services",
+  "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
+  "options": {
+    "api_key": "YOUR_GOVEE_API_KEY",
+    "port": 5000
+  },
+  "schema": {
+    "api_key": "str",
+    "port": "int?"
+  },
+  "ingress": true,
+  "ingress_port": 5000,
+  "ingress_entry": "http://[HOST]:[PORT]",
+  "ports": {
+    "5000/tcp": 5000
+  },
+  "boot": "auto"
 }
