@@ -1,8 +1,8 @@
 {
-  "name": "Govee Control Add-on",
+  "name": "Govee Light Control Add-on",
   "version": "1.0.0",
-  "slug": "govee_control",
-  "description": "A simple add-on to control your Govee devices using your Govee API key.",
+  "slug": "govee_control_addon",
+  "description": "A simple add-on to control your Govee lights using your Govee API key.",
   "startup": "services",
   "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
   "options": {
