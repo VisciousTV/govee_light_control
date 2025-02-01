@@ -1,0 +1,6 @@
+{
+  "name": "Govee Add-ons Repository",
+  "addons": [
+    "govee_control_addon"
+  ]
+}
